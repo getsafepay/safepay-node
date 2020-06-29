@@ -6,7 +6,7 @@ const config = {
   environment: "sandbox",
   sandbox: {
     baseUrl: "https://sandbox.api.getsafepay.com",
-    apiKey: "sec_e5dd3b9f-48f4-46d7-a484-0a1502b41576",
+    apiKey: "sec_e5dd3b9f-48f4-46d7-a484-0a1502b4157asd6",
     apiSecret: "20b883bd5453c419f15951579f963af4b4678425502da1311a14927018487bec"
   },
   production: {
