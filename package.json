@@ -1,0 +1,47 @@
+{
+  "name": "safepay",
+  "version": "0.0.1",
+  "description": "Official NodeJS SDK for Safepay API",
+  "main": "dist/safepay",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build:commonjs": "babel lib -d dist",
+    "build": "npm run clean && npm run build:commonjs",
+    "debug": "npm run build && node-debug examples/index.js",
+    "test": "npm run build && mocha --require babel-register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getsafepay/safepay-node.git"
+  },
+  "keywords": [
+    "safepay",
+    "payments",
+    "node",
+    "nodejs",
+    "safepay-node"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getsafepay/safepay-node/issues"
+  },
+  "homepage": "https://github.com/getsafepay/safepay-node#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "deep-equal": "^2.0.3",
+    "mocha": "^8.0.1",
+    "nock": "^13.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "qs": "^6.9.4"
+  }
+}
