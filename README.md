@@ -7,7 +7,7 @@ Read up here for getting started and understanding the payment flow with Safepay
 ## Installation
 
 ```bash
-npm i safepay
+npm i  safepay
 ```
 
 ### Basic Usage
