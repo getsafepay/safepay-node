@@ -1,21 +1,15 @@
 {
   "name": "safepay",
-  "version": "0.0.2",
+  "license": "MIT",
+  "version": "0.1.0",
   "description": "Official NodeJS SDK for Safepay API",
-  "main": "dist/safepay",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
-    "build:commonjs": "babel lib -d dist",
-    "build": "npm run clean && npm run build:commonjs",
-    "debug": "npm run build && node-debug examples/index.js",
-    "test": "npm run build && mocha --require babel-register"
-  },
+  "homepage": "https://github.com/getsafepay/safepay-node#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/getsafepay/safepay-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/getsafepay/safepay-node/issues"
   },
   "keywords": [
     "safepay",
@@ -24,24 +18,33 @@
     "nodejs",
     "safepay-node"
   ],
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/getsafepay/safepay-node/issues"
+  "directories": {
+    "test": "test"
   },
-  "homepage": "https://github.com/getsafepay/safepay-node#readme",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "chai": "^4.2.0",
-    "deep-equal": "^2.0.3",
-    "mocha": "^8.0.1",
-    "nock": "^13.0.0"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist; tsc",
+    "lint": "eslint . --ext js,ts",
+    "prepare": "husky install",
+    "prepublish": "yarn build"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "qs": "^6.9.4"
+    "axios": "^0.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-sort-destructure-keys": "^1.3.5",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
+    "typescript": "^4.4.3"
   }
 }
