@@ -64,7 +64,7 @@ const { token } = await safepay.payments.create({
 | `webhooks`    | `boolean` | Optional, defaults to `false`                 | No       |
 
 ```typescript
-const url = await safepay.checkout.create({
+const url = safepay.checkout.create({
   token,
   orderId: 'T800',
   cancelUrl: 'http://example.com/cancel',
@@ -80,29 +80,26 @@ const url = await safepay.checkout.create({
 
 #### Signature
 
-If you're not using webhooks, at the end of a successful payment flow, Safepay will send a `POST` request to the `redirectUrl` you pass to `safepay.checkout.create` with a parameter in the body called `sig`. To make sure the request is coming from Safepay, you need to check its authenticity.
-
-Payload from Safepay
-
-```json
-{
-  "tracker": "...",
-  "token": "...",
-  "orderId": "T800",
-  "ref": "...",
-  "sig": "..."
-}
-```
-
-> Note that the payload contains `tracker` and `token`. For `safepay.verify.signature`, please use `tracker`.
-
-| Parameter   | Type     | Description                   | Required |
-| ----------- | -------- | ----------------------------- | -------- |
-| `token`     | `string` | `tracker` from `request.body` | Yes      |
-| `signature` | `string` | `sig` from `request.body`     | Yes      |
+| Parameter | Type     | Description                       | Required |
+| --------- | -------- | --------------------------------- | -------- |
+| `request` | `object` | The `req` object from your server | Yes      |
 
 ```typescript
-const valid = await safepay.verify.signature(token, signature)
+const valid = safepay.verify.signature(request)
+
+// mark the invoice as paid if valid
+// show an error if invalid
+```
+
+#### Webhook
+
+| Parameter | Type     | Description                       | Required |
+| --------- | -------- | --------------------------------- | -------- |
+| `secret`  | `string` | Your Safepay webhook secret       | Yes      |
+| `request` | `object` | The `req` object from your server | Yes      |
+
+```typescript
+const valid = await safepay.verify.webhook(secret, request)
 
 // mark the invoice as paid if valid
 // show an error if invalid

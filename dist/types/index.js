@@ -15,3 +15,4 @@ __exportStar(require("./safepay"), exports);
 // resources
 __exportStar(require("./checkout"), exports);
 __exportStar(require("./payments"), exports);
+__exportStar(require("./verify"), exports);

@@ -12,14 +12,14 @@ export class Checkout {
     this.config = config
   }
 
-  async create({
+  create({
     cancelUrl,
     orderId,
     redirectUrl,
     source = 'custom',
     token,
     webhooks = false
-  }: CheckoutCreateParams): Promise<CheckoutCreateData> {
+  }: CheckoutCreateParams): CheckoutCreateData {
     const url =
       this.config.environment === 'production' ? URL_PRODUCTION : URL_SANDBOX
 

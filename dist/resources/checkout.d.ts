@@ -2,5 +2,5 @@ import { CheckoutCreateData, CheckoutCreateParams, SafepayConfig } from '../type
 export declare class Checkout {
     private config;
     constructor(config: SafepayConfig);
-    create({ cancelUrl, orderId, redirectUrl, source, token, webhooks }: CheckoutCreateParams): Promise<CheckoutCreateData>;
+    create({ cancelUrl, orderId, redirectUrl, source, token, webhooks }: CheckoutCreateParams): CheckoutCreateData;
 }

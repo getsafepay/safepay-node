@@ -17,7 +17,11 @@ export class Payments {
     amount,
     currency
   }: PaymentsCreateParams): Promise<PaymentsCreateData> {
-    const { data } = await axios.request<PaymentsCreateData>({
+    const {
+      data: { data }
+    } = await axios.request<{
+      data: PaymentsCreateData
+    }>({
       baseURL: this.config.url,
       data: {
         amount,

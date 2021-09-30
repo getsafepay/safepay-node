@@ -63,7 +63,7 @@ var Payments = /** @class */ (function () {
                             url: '/order/v1/init'
                         })];
                     case 1:
-                        data = (_b.sent()).data;
+                        data = (_b.sent()).data.data;
                         return [2 /*return*/, data];
                 }
             });
