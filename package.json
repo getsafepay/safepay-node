@@ -1,7 +1,7 @@
 {
   "name": "safepay",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Official NodeJS SDK for Safepay API",
   "homepage": "https://github.com/getsafepay/safepay-node#readme",
   "repository": {
