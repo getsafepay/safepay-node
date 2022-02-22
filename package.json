@@ -1,5 +1,5 @@
 {
-  "name": "safepay",
+  "name": "@sfpy/node-sdk",
   "license": "MIT",
   "version": "1.0.0",
   "description": "Official NodeJS SDK for Safepay API",
