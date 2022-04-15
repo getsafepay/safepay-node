@@ -7,13 +7,13 @@ Official nodejs library for [Safepay API](https://getsafepay.com).
 ### With Yarn
 
 ```
-yarn add safepay
+yarn add @sfpy/node-sdk
 ```
 
 ### With NPM
 
 ```
-npm install safepay
+npm install @sfpy/node-sdk
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ npm install safepay
 Import and create a Safepay client by passing your config;
 
 ```typescript
-import Safepay from 'safepay'
+import Safepay from '@sfpy/node-sdk'
 
 const safepay = new Safepay({
   environment: 'sandbox',
