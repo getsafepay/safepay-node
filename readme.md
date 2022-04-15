@@ -21,7 +21,7 @@ npm install @sfpy/node-sdk
 Import and create a Safepay client by passing your config;
 
 ```typescript
-import Safepay from '@sfpy/node-sdk'
+import { Safepay } from '@sfpy/node-sdk'
 
 const safepay = new Safepay({
   environment: 'sandbox',
