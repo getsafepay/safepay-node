@@ -1,17 +1,19 @@
-export type SafepayEnvironment = 'sandbox' | 'production'
+import { Environment } from '../utils'
+
+export type SafepayEnvironment = Environment.Sandbox | Environment.Production
 
 export type SafepayCurrency = 'PKR' | 'USD'
 
 export type SafepayOptions = {
   environment: SafepayEnvironment
-  key: string
-  secret: string
-  url?: string
+  apiKey: string
+  v1Secret: string
+  webhookSecret: string
 }
 
 export type SafepayConfig = {
   environment: SafepayEnvironment
-  key: string
-  secret: string
-  url: string
+  apiKey: string
+  v1Secret: string
+  webhookSecret: string
 }

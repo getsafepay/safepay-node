@@ -6,8 +6,7 @@ import {
   requestSignatureExpress,
   requestSignatureFastify,
   requestWebhookExpress,
-  requestWebhookFastify,
-  WEBHOOK_SECRET_KEY
+  requestWebhookFastify
 } from './fixtures/verify'
 
 test('signature with express', t => {
@@ -29,10 +28,7 @@ test('signature with fastify', t => {
 test('webhook with express', t => {
   const safepay = new Safepay(config.production)
 
-  const valid = safepay.verify.webhook(
-    WEBHOOK_SECRET_KEY,
-    requestWebhookExpress
-  )
+  const valid = safepay.verify.webhook(requestWebhookExpress)
 
   t.true(valid)
 })
@@ -40,10 +36,7 @@ test('webhook with express', t => {
 test('webhook with fastify', t => {
   const safepay = new Safepay(config.production)
 
-  const valid = safepay.verify.webhook(
-    WEBHOOK_SECRET_KEY,
-    requestWebhookFastify
-  )
+  const valid = safepay.verify.webhook(requestWebhookFastify)
 
   t.true(valid)
 })

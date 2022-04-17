@@ -5,6 +5,7 @@ import {
   PaymentsCreateParams,
   SafepayConfig
 } from '../types'
+import { API_URL_PRODUCTION, API_URL_SANDBOX, Environment } from '../utils'
 
 export class Payments {
   private config: SafepayConfig
@@ -17,15 +18,19 @@ export class Payments {
     amount,
     currency
   }: PaymentsCreateParams): Promise<PaymentsCreateData> {
+    const url =
+      this.config.environment === Environment.Production
+        ? API_URL_PRODUCTION
+        : API_URL_SANDBOX
     const {
       data: { data }
     } = await axios.request<{
       data: PaymentsCreateData
     }>({
-      baseURL: this.config.url,
+      baseURL: url,
       data: {
         amount,
-        client: this.config.key,
+        client: this.config.apiKey,
         currency,
         environment: this.config.environment
       },

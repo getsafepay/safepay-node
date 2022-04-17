@@ -11,12 +11,16 @@ export const validateOptions = (
     throw new Error('Environment is invalid')
   }
 
-  if (!options.key) {
+  if (!options.apiKey) {
     throw new Error(`API key is missing for ${options.environment}`)
   }
 
-  if (!options.secret) {
-    throw new Error(`API secret is missing for ${options.environment}`)
+  if (!options.v1Secret) {
+    throw new Error(`v1 secret key is missing for ${options.environment}`)
+  }
+
+  if (!options.webhookSecret) {
+    throw new Error(`Webhook secret is missing for ${options.environment}`)
   }
 
   return true
