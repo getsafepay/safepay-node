@@ -1,15 +1,9 @@
 import { Checkout, Payments, Verify } from './resources'
 import { SafepayConfig, SafepayOptions } from './types'
-import {
-  API_URL_PRODUCTION,
-  API_URL_SANDBOX,
-  Environment,
-  validateOptions
-} from './utils'
+import { validateOptions } from './utils'
 
 export class Safepay {
   private config: SafepayConfig
-  private url: string
 
   checkout: Checkout
   payments: Payments
@@ -24,11 +18,6 @@ export class Safepay {
       webhookSecret: options.webhookSecret,
       v1Secret: options.v1Secret
     }
-
-    this.url =
-      options.environment === Environment.Production
-        ? API_URL_PRODUCTION
-        : API_URL_SANDBOX
 
     this.checkout = new Checkout(this.config)
     this.payments = new Payments(this.config)
