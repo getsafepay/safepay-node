@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { Safepay } from '../src'
 import { SafepayEnvironment } from '../src/types'
-import { config, configWithUrl } from './fixtures/config'
+import { config } from './fixtures/config'
 
 test('instantiate Safepay on sandbox', t => {
   const safepay = new Safepay(config.sandbox)
@@ -16,25 +16,14 @@ test('instantiate Safepay on production', t => {
   t.truthy(safepay)
 })
 
-test('instantiate Safepay on sandbox with custom url', t => {
-  const safepay = new Safepay(configWithUrl.sandbox)
-
-  t.truthy(safepay)
-})
-
-test('instantiate Safepay on production with custom url', t => {
-  const safepay = new Safepay(configWithUrl.production)
-
-  t.truthy(safepay)
-})
-
 test('instantiate Safepay without environment', t => {
   t.throws(
     () =>
       new Safepay({
         environment: '' as SafepayEnvironment,
-        key: 'foo',
-        secret: 'bar'
+        apiKey: 'foo',
+        v1Secret: 'bar',
+        webhookSecret: 'foo'
       })
   )
 })
@@ -44,8 +33,9 @@ test('instantiate Safepay with invalid environment', t => {
     () =>
       new Safepay({
         environment: 'foo' as SafepayEnvironment,
-        key: 'foo',
-        secret: 'bar'
+        apiKey: 'foo',
+        v1Secret: 'bar',
+        webhookSecret: 'foo'
       })
   )
 })
@@ -54,9 +44,10 @@ test('instantiate Safepay without key', t => {
   t.throws(
     () =>
       new Safepay({
-        environment: 'sandbox',
-        key: '',
-        secret: 'bar'
+        environment: 'sandbox' as SafepayEnvironment,
+        apiKey: '',
+        v1Secret: 'bar',
+        webhookSecret: 'foo'
       })
   )
 })
@@ -65,9 +56,22 @@ test('instantiate Safepay without secret', t => {
   t.throws(
     () =>
       new Safepay({
-        environment: 'sandbox',
-        key: 'foo',
-        secret: ''
+        environment: 'sandbox' as SafepayEnvironment,
+        apiKey: 'foo',
+        v1Secret: '',
+        webhookSecret: 'foo'
+      })
+  )
+})
+
+test('instantiate Safepay without webhook secret', t => {
+  t.throws(
+    () =>
+      new Safepay({
+        environment: 'sandbox' as SafepayEnvironment,
+        apiKey: 'foo',
+        v1Secret: 'bar',
+        webhookSecret: ''
       })
   )
 })

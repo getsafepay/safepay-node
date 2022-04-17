@@ -16,13 +16,13 @@ export class Verify {
     return (
       sig ===
       crypto
-        .createHmac('sha256', this.config.secret)
+        .createHmac('sha256', this.config.v1Secret)
         .update(tracker)
         .digest('hex')
     )
   }
 
-  webhook(secret: string, request: HttpRequest): boolean {
+  webhook(request: HttpRequest): boolean {
     const data = Buffer.from(JSON.stringify(request.body))
 
     const signature = (request.headers as IncomingHttpHeaders)[
@@ -31,7 +31,10 @@ export class Verify {
 
     return (
       signature ===
-      crypto.createHmac('sha512', secret).update(data).digest('hex')
+      crypto
+        .createHmac('sha512', this.config.webhookSecret)
+        .update(data)
+        .digest('hex')
     )
   }
 }
