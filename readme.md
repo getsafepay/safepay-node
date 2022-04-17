@@ -25,8 +25,9 @@ import { Safepay } from '@sfpy/node-sdk'
 
 const safepay = new Safepay({
   environment: 'sandbox',
-  key: 'foo',
-  secret: 'bar'
+  apiKey: 'sec_asd12-2342s-1231s',
+  v1Secret: 'bar',
+  webhookSecret: 'foo'
 })
 ```
 
@@ -95,11 +96,10 @@ const valid = safepay.verify.signature(request)
 
 | Parameter | Type     | Description                       | Required |
 | --------- | -------- | --------------------------------- | -------- |
-| `secret`  | `string` | Your Safepay webhook secret       | Yes      |
 | `request` | `object` | The `req` object from your server | Yes      |
 
 ```typescript
-const valid = await safepay.verify.webhook(secret, request)
+const valid = await safepay.verify.webhook(request)
 
 // mark the invoice as paid if valid
 // show an error if invalid
