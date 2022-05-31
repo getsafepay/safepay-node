@@ -44,4 +44,4 @@ export const validateOptions = (
 const validateEnvironment = (
   environment: string
 ): environment is SafepayEnvironment =>
-  ['sandbox', 'production'].includes(environment)
+  ['sandbox', 'production', 'development'].includes(environment)
