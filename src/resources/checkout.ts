@@ -3,7 +3,7 @@ import {
   CheckoutCreateParams,
   SafepayConfig
 } from '../types'
-import { Environment, URL_PRODUCTION, URL_SANDBOX } from '../utils'
+import { buildCheckoutUrl } from '../utils/builder'
 
 export class Checkout {
   private config: SafepayConfig
@@ -20,10 +20,7 @@ export class Checkout {
     token,
     webhooks = false
   }: CheckoutCreateParams): CheckoutCreateData {
-    const url =
-      this.config.environment === Environment.Production
-        ? URL_PRODUCTION
-        : URL_SANDBOX
+    const url = buildCheckoutUrl(this.config.channel, this.config.environment)
 
     const params = new URLSearchParams({
       beacon: token,

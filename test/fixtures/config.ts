@@ -17,5 +17,11 @@ export const config: Record<SafepayEnvironment, SafepayOptions> = {
     apiKey: 'sec_00000000-0000-0000-0000-000000000000',
     v1Secret: 'bar',
     webhookSecret: 'foo'
+  },
+  development: {
+    environment: Environment.Development,
+    apiKey: 'sec_00000000-0000-0000-0000-000000000000',
+    v1Secret: 'bar',
+    webhookSecret: 'foo'
   }
 }

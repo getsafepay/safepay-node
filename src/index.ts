@@ -1,6 +1,6 @@
 import { Checkout, Payments, Verify } from './resources'
 import { SafepayConfig, SafepayOptions } from './types'
-import { validateOptions } from './utils'
+import { Channel, validateOptions } from './utils'
 
 export class Safepay {
   private config: SafepayConfig
@@ -16,7 +16,8 @@ export class Safepay {
       environment: options.environment,
       apiKey: options.apiKey,
       webhookSecret: options.webhookSecret,
-      v1Secret: options.v1Secret
+      v1Secret: options.v1Secret,
+      channel: options.channel || Channel.Accounts
     }
 
     this.checkout = new Checkout(this.config)

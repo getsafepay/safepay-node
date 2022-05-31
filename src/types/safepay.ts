@@ -1,14 +1,25 @@
-import { Environment } from '../utils'
+import { Channel, Environment } from '../utils'
 
-export type SafepayEnvironment = Environment.Sandbox | Environment.Production
+export type SafepayEnvironment =
+  | Environment.Sandbox
+  | Environment.Production
+  | Environment.Development
 
-export type SafepayCurrency = 'PKR' | 'USD'
+export type SafepayCurrency =
+  | 'PKR'
+  | 'USD'
+  | 'AED'
+  | 'SAR'
+  | 'CAD'
+  | 'EUR'
+  | 'GBP'
 
 export type SafepayOptions = {
   environment: SafepayEnvironment
   apiKey: string
   v1Secret: string
   webhookSecret: string
+  channel?: Channel
 }
 
 export type SafepayConfig = {
@@ -16,4 +27,5 @@ export type SafepayConfig = {
   apiKey: string
   v1Secret: string
   webhookSecret: string
+  channel: Channel
 }
