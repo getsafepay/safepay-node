@@ -26,16 +26,9 @@ export const validateOptions = (
 
   if (
     options.channel === Channel.Cards &&
-    options.environment !== Environment.Development
+    options.environment === Environment.Production
   ) {
-    throw new Error('Cards can only be used on development for now')
-  }
-
-  if (
-    options.environment === Environment.Development &&
-    options.channel !== Channel.Cards
-  ) {
-    throw new Error('Development is reserved for cards at this time')
+    throw new Error('Cards can only be used on sandbox or development for now')
   }
 
   return true
