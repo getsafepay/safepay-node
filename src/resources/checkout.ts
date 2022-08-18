@@ -20,7 +20,7 @@ export class Checkout {
     token,
     webhooks = false
   }: CheckoutCreateParams): CheckoutCreateData {
-    const url = buildCheckoutUrl(this.config.channel, this.config.environment)
+    const url = buildCheckoutUrl(this.config.environment)
 
     const params = new URLSearchParams({
       beacon: token,

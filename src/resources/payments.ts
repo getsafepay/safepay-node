@@ -5,7 +5,6 @@ import {
   PaymentsCreateParams,
   SafepayConfig
 } from '../types'
-import { API_URL_PRODUCTION, API_URL_SANDBOX, Environment } from '../utils'
 import { buildApiUrl } from '../utils/builder'
 
 export class Payments {

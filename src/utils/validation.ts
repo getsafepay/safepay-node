@@ -1,5 +1,4 @@
 import { SafepayConfig, SafepayEnvironment, SafepayOptions } from '../types'
-import { Channel, Environment } from './constants'
 
 export const validateOptions = (
   options: SafepayOptions
@@ -22,13 +21,6 @@ export const validateOptions = (
 
   if (!options.webhookSecret) {
     throw new Error(`Webhook secret is missing for ${options.environment}`)
-  }
-
-  if (
-    options.channel === Channel.Cards &&
-    options.environment === Environment.Production
-  ) {
-    throw new Error('Cards can only be used on sandbox or development for now')
   }
 
   return true

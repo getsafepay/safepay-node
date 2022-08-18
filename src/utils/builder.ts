@@ -1,33 +1,24 @@
 import {
-  ACCOUNTS_ROUTE,
   API_URL_DEVELOPMENT,
   API_URL_PRODUCTION,
   API_URL_SANDBOX,
-  CARDS_ROUTE,
-  Channel,
-  DEVELOPMENT_BASE,
-  Environment,
-  PROD_BASE,
-  SANDBOX_BASE
+  CHECKOUT_DEVELOPMENT,
+  CHECKOUT_PRODUCTION,
+  CHECKOUT_SANDBOX,
+  Environment
 } from './constants'
 
-export function buildCheckoutUrl(channel: Channel, env: Environment): string {
-  let baseUrl, channelRoute
+export function buildCheckoutUrl(env: Environment): string {
+  let url
   if (env === Environment.Development) {
-    baseUrl = DEVELOPMENT_BASE
+    url = CHECKOUT_DEVELOPMENT
   } else if (env === Environment.Sandbox) {
-    baseUrl = SANDBOX_BASE
+    url = CHECKOUT_SANDBOX
   } else {
-    baseUrl = PROD_BASE
+    url = CHECKOUT_PRODUCTION
   }
 
-  if (channel === Channel.Cards) {
-    channelRoute = CARDS_ROUTE
-  } else {
-    channelRoute = ACCOUNTS_ROUTE
-  }
-
-  return `${baseUrl}${channelRoute}`
+  return url
 }
 
 export function buildApiUrl(env: Environment): string {

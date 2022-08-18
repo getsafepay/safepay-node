@@ -1,4 +1,4 @@
-import { Channel, Environment } from '../utils'
+import { Environment } from '../utils'
 
 export type SafepayEnvironment =
   | Environment.Sandbox
@@ -19,7 +19,6 @@ export type SafepayOptions = {
   apiKey: string
   v1Secret: string
   webhookSecret: string
-  channel?: Channel
 }
 
 export type SafepayConfig = {
@@ -27,5 +26,4 @@ export type SafepayConfig = {
   apiKey: string
   v1Secret: string
   webhookSecret: string
-  channel: Channel
 }

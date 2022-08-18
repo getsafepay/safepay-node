@@ -11,3 +11,7 @@ Currently, three features are available;
 - Creating payments
 - Creating checkout links
 - Verifying signatures
+
+## 2.0.0
+
+Major change to support the new Checkout interface.
