@@ -11,7 +11,7 @@ export class Verify {
   }
 
   signature(request: HttpRequest): boolean {
-    const { sig, tracker } = request.body.data as Record<string, never>
+    const { sig, tracker } = request.body as Record<string, never>
 
     return (
       sig ===

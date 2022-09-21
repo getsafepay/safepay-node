@@ -2,10 +2,8 @@ import type { Request } from 'express'
 import type { FastifyRequest } from 'fastify'
 
 export const signatureBody = {
-  data: {
-    sig: '530fdbcf1bf498aff65e42faff0791c366b0794dbe2e7bc1681ba1837b0c7a25',
-    tracker: '1234'
-  }
+  sig: '530fdbcf1bf498aff65e42faff0791c366b0794dbe2e7bc1681ba1837b0c7a25',
+  tracker: '1234'
 }
 
 export const requestSignatureExpress: Partial<Request> = {
