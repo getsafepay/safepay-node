@@ -1,8 +1,11 @@
 import test from 'ava'
 
-import { Safepay } from '../src'
+import { Safepay, Subscribe } from '../src'
 import { SafepayEnvironment } from '../src/types'
-import { config } from './fixtures/config'
+import { config, configSubscriptions } from './fixtures/config'
+import { Subscription } from '../src/resources'
+
+// Payment
 
 test('instantiate Safepay on sandbox', t => {
   const safepay = new Safepay(config.sandbox)
@@ -72,6 +75,56 @@ test('instantiate Safepay without webhook secret', t => {
         apiKey: 'foo',
         v1Secret: 'bar',
         webhookSecret: ''
+      })
+  )
+})
+
+// Subscription
+
+test('instantiate Subscription Checkout on development', t => {
+  const subscription = new Subscribe(configSubscriptions.development)
+
+  t.truthy(subscription)
+})
+
+test('instantiate Subscription Checkout on sandbox', t => {
+  const subscription = new Subscribe(configSubscriptions.sandbox)
+
+  t.truthy(subscription)
+})
+
+test('instantiate Subscription Checkout on production', t => {
+  const subscription = new Subscribe(configSubscriptions.production)
+
+  t.truthy(subscription)
+})
+
+test('instantiate Subscription Checkout without environment', t => {
+  t.throws(
+    () =>
+      new Subscribe({
+        environment: '' as SafepayEnvironment,
+        v1Secret: 'bar'
+      })
+  )
+})
+
+test('instantiate Subscription Checkout with invalid environment', t => {
+  t.throws(
+    () =>
+      new Subscribe({
+        environment: 'foo' as SafepayEnvironment,
+        v1Secret: 'bar'
+      })
+  )
+})
+
+test('instantiate Subscription Checkout without v1secret', t => {
+  t.throws(
+    () =>
+      new Subscribe({
+        environment: 'sandbox' as SafepayEnvironment,
+        v1Secret: ''
       })
   )
 })
