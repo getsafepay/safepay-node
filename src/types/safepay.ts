@@ -27,3 +27,12 @@ export type SafepayConfig = {
   v1Secret: string
   webhookSecret: string
 }
+
+export type SafepayOptionsSubscriptions = {
+  environment: SafepayEnvironment
+  v1Secret: string
+}
+export type SafepayConfigSubscriptions = {
+  environment: SafepayEnvironment
+  v1Secret: string
+}

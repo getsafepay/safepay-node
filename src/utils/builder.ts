@@ -5,7 +5,10 @@ import {
   CHECKOUT_DEVELOPMENT,
   CHECKOUT_PRODUCTION,
   CHECKOUT_SANDBOX,
-  Environment
+  Environment,
+  SUBSCRIPTION_DEVELOPMENT,
+  SUBSCRIPTION_PRODUCTION,
+  SUBSCRIPTION_SANDBOX
 } from './constants'
 
 export function buildCheckoutUrl(env: Environment): string {
@@ -21,12 +24,25 @@ export function buildCheckoutUrl(env: Environment): string {
   return url
 }
 
+export function buildSubscriptionCheckoutUrl(env: Environment): string {
+  let url
+  if (env === Environment.Development) {
+    url = SUBSCRIPTION_DEVELOPMENT
+  } else if (env === Environment.Sandbox) {
+    url = SUBSCRIPTION_SANDBOX
+  } else {
+    url = SUBSCRIPTION_PRODUCTION
+  }
+
+  return url
+}
+
 export function buildApiUrl(env: Environment): string {
   if (env === Environment.Development) {
-    return API_URL_DEVELOPMENT
+    return API_URL_DEVELOPMENT + '/client'
   } else if (env === Environment.Sandbox) {
-    return API_URL_SANDBOX
+    return API_URL_SANDBOX + '/client'
   } else {
-    return API_URL_PRODUCTION
+    return API_URL_PRODUCTION + '/client'
   }
 }

@@ -1,7 +1,8 @@
 import {
   CheckoutCreateData,
   CheckoutCreateParams,
-  SafepayConfig
+  SafepayConfig,
+  SafepayConfigSubscriptions
 } from '../types'
 import { buildCheckoutUrl } from '../utils/builder'
 
