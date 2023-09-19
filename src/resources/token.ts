@@ -27,16 +27,3 @@ export class GenerateToken {
     return data
   }
 }
-
-// export class FetchToken {
-//   private config: SafepayConfigSubscriptions
-
-//   constructor(config: SafepayConfigSubscriptions) {
-//     this.config = config
-//   }
-
-//   async fetch(): string {
-
-//     return token
-//   }
-// }
