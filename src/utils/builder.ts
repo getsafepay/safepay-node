@@ -38,11 +38,14 @@ export function buildSubscriptionCheckoutUrl(env: Environment): string {
 }
 
 export function buildApiUrl(env: Environment): string {
+  let url
   if (env === Environment.Development) {
-    return API_URL_DEVELOPMENT + '/client'
+    url = API_URL_DEVELOPMENT + '/client'
   } else if (env === Environment.Sandbox) {
-    return API_URL_SANDBOX + '/client'
+    url = API_URL_SANDBOX + '/client'
   } else {
-    return API_URL_PRODUCTION + '/client'
+    url = API_URL_PRODUCTION + '/client'
   }
+
+  return url
 }
