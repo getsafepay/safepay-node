@@ -12,35 +12,21 @@ const safepay = new Subscribe({
   v1Secret: SECRET_KEY_DEVELOPMENT
 })
 
+const generateUrl = (result: string) => {
+  return safepay.createCheckoutUrl.create({
+    cancelUrl: CANCEL_URL,
+    redirectUrl: REDIRECT_URL,
+    planId: PLAN_ID,
+    authToken: result
+  })
+}
+
 safepay.generateToken
   .create()
   .then(result => {
-    console.log(`Auth token: ${result}`)
-    const url = safepay.createCheckoutUrl.create({
-      cancelUrl: CANCEL_URL,
-      redirectUrl: REDIRECT_URL,
-      planId: PLAN_ID,
-      authToken: result
-    })
+    const url = generateUrl(result)
     console.log(`Url: ${url}`)
   })
   .catch(error => {
     console.error(`Error generating token: ${error}`)
   })
-
-// function successCallback(result: string) {
-//   console.log(`Auth token: ${result}`);
-// const url=  safepay.createCheckoutUrl.create({
-//   cancelUrl:CANCEL_URL,
-//   redirectUrl:REDIRECT_URL,
-//   planId:PLAN_ID,
-//   authToken:result
-// })
-// console.log(`Url: ${url}`)
-// }
-
-// function failureCallback(error: string) {
-//   console.error(`Error generating token: ${error}`);
-// }
-
-// safepay.generateToken.create().then(successCallback).catch(failureCallback)
