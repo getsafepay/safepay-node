@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { Safepay, Subscribe } from '../src'
+import { Safepay } from '../src'
 import { SafepayEnvironment } from '../src/types'
 import { config, configSubscriptions } from './fixtures/config'
 import { Subscription } from '../src/resources'
@@ -82,49 +82,19 @@ test('instantiate Safepay without webhook secret', t => {
 // Subscription
 
 test('instantiate Subscription Checkout on development', t => {
-  const subscription = new Subscribe(configSubscriptions.development)
+  const subscription = new Safepay(config.development)
 
   t.truthy(subscription)
 })
 
 test('instantiate Subscription Checkout on sandbox', t => {
-  const subscription = new Subscribe(configSubscriptions.sandbox)
+  const subscription = new Safepay(config.sandbox)
 
   t.truthy(subscription)
 })
 
 test('instantiate Subscription Checkout on production', t => {
-  const subscription = new Subscribe(configSubscriptions.production)
+  const subscription = new Safepay(config.production)
 
   t.truthy(subscription)
-})
-
-test('instantiate Subscription Checkout without environment', t => {
-  t.throws(
-    () =>
-      new Subscribe({
-        environment: '' as SafepayEnvironment,
-        v1Secret: 'bar'
-      })
-  )
-})
-
-test('instantiate Subscription Checkout with invalid environment', t => {
-  t.throws(
-    () =>
-      new Subscribe({
-        environment: 'foo' as SafepayEnvironment,
-        v1Secret: 'bar'
-      })
-  )
-})
-
-test('instantiate Subscription Checkout without v1secret', t => {
-  t.throws(
-    () =>
-      new Subscribe({
-        environment: 'sandbox' as SafepayEnvironment,
-        v1Secret: ''
-      })
-  )
 })

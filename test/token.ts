@@ -2,7 +2,7 @@ import test from 'ava'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 
-import { Subscribe } from '../src'
+import { Safepay } from '../src'
 import { config } from './fixtures/config'
 
 let mock: MockAdapter
@@ -20,7 +20,7 @@ test.after(() => {
 })
 
 test('generare token', async t => {
-  const subscribe = new Subscribe(config.sandbox)
+  const subscribe = new Safepay(config.sandbox)
 
   const token = await subscribe.generateToken.create()
 

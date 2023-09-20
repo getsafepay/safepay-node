@@ -1,4 +1,4 @@
-import { Subscribe } from './src/index'
+import { Safepay } from './src/index'
 import {
   CANCEL_URL,
   Environment,
@@ -7,13 +7,15 @@ import {
   SECRET_KEY_DEVELOPMENT
 } from './src/utils'
 
-const safepay = new Subscribe({
+const safepay = new Safepay({
   environment: Environment.Development,
-  v1Secret: SECRET_KEY_DEVELOPMENT
+  v1Secret: SECRET_KEY_DEVELOPMENT,
+  apiKey: 'sec_0000',
+  webhookSecret: 'foo'
 })
 
 const generateUrl = (result: string) => {
-  return safepay.createCheckoutUrl.create({
+  return safepay.subscriptionCheckout.create({
     cancelUrl: CANCEL_URL,
     redirectUrl: REDIRECT_URL,
     planId: PLAN_ID,
@@ -21,7 +23,7 @@ const generateUrl = (result: string) => {
   })
 }
 
-safepay.generateToken
+safepay.token
   .create()
   .then(result => {
     const url = generateUrl(result)

@@ -1,14 +1,14 @@
-import { SafepayConfigSubscriptions } from '../types'
+import { SafepayConfig, SafepayConfigSubscriptions } from '../types'
 import {
   SubscriptionCheckoutCreateData,
   SubscriptionCheckoutCreateParams
 } from '../types/subscription'
 import { buildSubscriptionCheckoutUrl } from '../utils/builder'
 
-export class Subscription {
-  private config: SafepayConfigSubscriptions
+export class SubscriptionCheckout {
+  private config: SafepayConfig
 
-  constructor(config: SafepayConfigSubscriptions) {
+  constructor(config: SafepayConfig) {
     this.config = config
   }
 

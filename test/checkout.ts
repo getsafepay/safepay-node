@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { Safepay, Subscribe } from '../src'
+import { Safepay } from '../src'
 import {
   CHECKOUT_PRODUCTION_URL,
   CHECKOUT_SANDBOX_URL,
@@ -10,7 +10,7 @@ import {
   checkoutParams,
   checkoutSubscriptionsParams
 } from './fixtures/checkout'
-import { config, configSubscriptions } from './fixtures/config'
+import { config } from './fixtures/config'
 
 test('sandbox url', t => {
   const safepay = new Safepay(config.sandbox)
@@ -41,7 +41,7 @@ test('with optional params', t => {
 })
 
 test('development subscription url', t => {
-  const subscription = new Subscribe(configSubscriptions.development)
+  const subscription = new Safepay(config.development)
 
   const url = subscription.createCheckoutUrl.create(checkoutSubscriptionsParams)
 
@@ -49,7 +49,7 @@ test('development subscription url', t => {
 })
 
 test('sandbox subscription url', t => {
-  const subscription = new Subscribe(configSubscriptions.sandbox)
+  const subscription = new Safepay(config.sandbox)
 
   const url = subscription.createCheckoutUrl.create(checkoutSubscriptionsParams)
 
@@ -57,7 +57,7 @@ test('sandbox subscription url', t => {
 })
 
 test('production subscription url', t => {
-  const safepay = new Subscribe(configSubscriptions.production)
+  const safepay = new Safepay(config.production)
 
   const url = safepay.createCheckoutUrl.create(checkoutSubscriptionsParams)
 

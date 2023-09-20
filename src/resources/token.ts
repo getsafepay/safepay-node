@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { SafepayConfigSubscriptions } from '../types'
+import { SafepayConfig, SafepayConfigSubscriptions } from '../types'
 import { buildApiUrl } from '../utils/builder'
 import { SubscriptionCheckoutCreateData } from '../types/subscription'
 
-export class GenerateToken {
-  private config: SafepayConfigSubscriptions
+export class Token {
+  private config: SafepayConfig
 
-  constructor(config: SafepayConfigSubscriptions) {
+  constructor(config: SafepayConfig) {
     this.config = config
   }
 

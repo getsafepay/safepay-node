@@ -1,17 +1,7 @@
-import {
-  Checkout,
-  GenerateToken,
-  Payments,
-  Verify,
-  Subscription
-} from './resources'
-import {
-  SafepayConfig,
-  SafepayConfigSubscriptions,
-  SafepayOptions,
-  SafepayOptionsSubscriptions
-} from './types'
-import { validateOptions, validateOptionsForSubscriptions } from './utils'
+import { Checkout, Payments, Verify, Token } from './resources'
+import { SubscriptionCheckout } from './resources/subscription'
+import { SafepayConfig, SafepayOptions } from './types'
+import { validateOptions } from './utils'
 
 export class Safepay {
   private config: SafepayConfig
@@ -19,6 +9,8 @@ export class Safepay {
   checkout: Checkout
   payments: Payments
   verify: Verify
+  token: Token
+  subscriptionCheckout: SubscriptionCheckout
 
   constructor(options: SafepayOptions) {
     validateOptions(options)
@@ -33,24 +25,7 @@ export class Safepay {
     this.checkout = new Checkout(this.config)
     this.payments = new Payments(this.config)
     this.verify = new Verify(this.config)
-  }
-}
-
-export class Subscribe {
-  private config: SafepayConfigSubscriptions
-
-  generateToken: GenerateToken
-  createCheckoutUrl: Subscription
-
-  constructor(options: SafepayOptionsSubscriptions) {
-    validateOptionsForSubscriptions(options)
-
-    this.config = {
-      environment: options.environment,
-      v1Secret: options.v1Secret
-    }
-
-    this.generateToken = new GenerateToken(this.config)
-    this.createCheckoutUrl = new Subscription(this.config)
+    this.token = new Token(this.config)
+    this.subscriptionCheckout = new SubscriptionCheckout(this.config)
   }
 }
