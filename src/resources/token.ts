@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { PaymentsCreateData, SafepayConfigSubscriptions } from '../types'
+import { SafepayConfigSubscriptions } from '../types'
 import { buildApiUrl } from '../utils/builder'
 import { SubscriptionCheckoutCreateData } from '../types/subscription'
 
