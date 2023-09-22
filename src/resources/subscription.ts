@@ -1,4 +1,4 @@
-import { SafepayConfig, SafepayConfigSubscriptions } from '../types'
+import { SafepayConfig } from '../types'
 import {
   SubscriptionCheckoutCreateData,
   SubscriptionCheckoutCreateParams
