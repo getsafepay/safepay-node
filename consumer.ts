@@ -26,12 +26,10 @@ const generateUrl = (result: string) => {
 safepay.authorization
   .create()
   .then(result => {
-    console.log(result)
-    const url = generateUrl(result)
-    console.log(url)
+    console.log(generateUrl(result))
   })
   .catch(error => {
-    console.error(`Error generating token: ${error}`)
+    console.error(error)
   })
 
 safepay.checkout
@@ -44,5 +42,5 @@ safepay.checkout
     console.log(result)
   })
   .catch(error => {
-    console.error(`Error generating token: ${error}`)
+    console.error(error)
   })
