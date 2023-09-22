@@ -1,5 +1,4 @@
 export { Checkout } from './checkout'
 export { Payments } from './payments'
 export { Verify } from './verify'
-export { SubscriptionCheckout } from './subscription'
-export { Token } from './token'
+export { Authorization } from './authorization'

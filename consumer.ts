@@ -14,32 +14,34 @@ const safepay = new Safepay({
   webhookSecret: 'foo'
 })
 
-// const generateUrl = (result: string) => {
-//   return safepay.subscriptionCheckout.create({
-//     cancelUrl: CANCEL_URL,
-//     redirectUrl: REDIRECT_URL,
-//     planId: PLAN_ID,
-//     authToken: result
-//   })
-// }
+const generateUrl = (result: string) => {
+  return safepay.checkout.createSubscriptionWithToken({
+    cancelUrl: CANCEL_URL,
+    redirectUrl: REDIRECT_URL,
+    planId: PLAN_ID,
+    authToken: result
+  })
+}
 
-// safepay.token
-//   .create()
-//   .then(result => {
-//     console.log(result)
-//     const url = generateUrl(result)
-//     console.log(`Url: ${url}`)
-//   })
-//   .catch(error => {
-//     console.error(`Error generating token: ${error}`)
-//   })
-
-safepay.helper
-  .makeUrl()
+safepay.authorization
+  .create()
   .then(result => {
     console.log(result)
-    // const url = generateUrl(result)
-    // console.log(`Url: ${url}`)
+    const url = generateUrl(result)
+    console.log(url)
+  })
+  .catch(error => {
+    console.error(`Error generating token: ${error}`)
+  })
+
+safepay.checkout
+  .createSubscription({
+    cancelUrl: CANCEL_URL,
+    redirectUrl: REDIRECT_URL,
+    planId: PLAN_ID
+  })
+  .then(result => {
+    console.log(result)
   })
   .catch(error => {
     console.error(`Error generating token: ${error}`)

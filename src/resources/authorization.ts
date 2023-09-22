@@ -1,21 +1,20 @@
 import axios from 'axios'
-import { SafepayConfig } from '../types'
+import { SafepayConfig, SubscriptionCreateData } from '../types'
 import { buildApiUrl } from '../utils/builder'
-import { SubscriptionCheckoutCreateData } from '../types/subscription'
 
-export class Token {
+export class Authorization {
   private config: SafepayConfig
 
   constructor(config: SafepayConfig) {
     this.config = config
   }
 
-  async create(): Promise<SubscriptionCheckoutCreateData> {
+  async create(): Promise<SubscriptionCreateData> {
     const url = buildApiUrl(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
-      data: SubscriptionCheckoutCreateData
+      data: SubscriptionCreateData
     }>({
       baseURL: url,
       headers: { 'X-SFPY-MERCHANT-SECRET': this.config.v1Secret },

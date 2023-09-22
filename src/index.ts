@@ -1,6 +1,5 @@
-import { Checkout, Payments, Verify, Token } from './resources'
-import { Helper } from './resources/generat'
-import { SubscriptionCheckout } from './resources/subscription'
+import { Checkout, Payments, Verify, Authorization } from './resources'
+
 import { SafepayConfig, SafepayOptions } from './types'
 import { validateOptions } from './utils'
 
@@ -10,9 +9,7 @@ export class Safepay {
   checkout: Checkout
   payments: Payments
   verify: Verify
-  token: Token
-  subscriptionCheckout: SubscriptionCheckout
-  helper: Helper
+  authorization: Authorization
 
   constructor(options: SafepayOptions) {
     validateOptions(options)
@@ -27,8 +24,6 @@ export class Safepay {
     this.checkout = new Checkout(this.config)
     this.payments = new Payments(this.config)
     this.verify = new Verify(this.config)
-    this.token = new Token(this.config)
-    this.subscriptionCheckout = new SubscriptionCheckout(this.config)
-    this.helper = new Helper(this.config)
+    this.authorization = new Authorization(this.config)
   }
 }
