@@ -4,6 +4,7 @@ import MockAdapter from 'axios-mock-adapter'
 
 import { Safepay } from '../src'
 import { config } from './fixtures/config'
+import { Environment } from '../src/utils'
 
 let mock: MockAdapter
 
@@ -22,7 +23,17 @@ test.after(() => {
 test('generare token', async t => {
   const subscribe = new Safepay(config.sandbox)
 
-  const token = await subscribe.generateToken.create()
+  const token = await subscribe.authorization.create()
 
   t.snapshot(token)
 })
+
+// test('generare token without v1', async t => {
+//   const subscribe = new Safepay({
+//     environment: Environment.Sandbox,
+//     apiKey: 'sec_00000000-0000-0000-0000-000000000000',
+//     v1Secret: 'gsgsg',
+//     webhookSecret: 'foo'
+//   })
+//   t.throws(async () => await subscribe.authorization.create())
+// })

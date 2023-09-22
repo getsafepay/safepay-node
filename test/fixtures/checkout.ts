@@ -1,5 +1,5 @@
 import { CheckoutCreateParams } from '../../src/types'
-import { SubscriptionCheckoutCreateParams } from '../../src/types/subscription'
+import { SubscriptionCreateParams } from '../../src/types/checkout'
 
 export const checkoutParams: CheckoutCreateParams = {
   cancelUrl: 'cancel',
@@ -14,7 +14,7 @@ export const CHECKOUT_SANDBOX_URL =
 export const CHECKOUT_PRODUCTION_URL =
   'https://getsafepay.com/checkout/pay?beacon=1234&cancel_url=cancel&env=production&order_id=T800&redirect_url=success&source=custom&webhooks=false'
 
-export const checkoutSubscriptionsParams: SubscriptionCheckoutCreateParams = {
+export const checkoutSubscriptionsParams: SubscriptionCreateParams = {
   planId: 'planId',
   authToken: 'authToken',
   cancelUrl: 'cancel',

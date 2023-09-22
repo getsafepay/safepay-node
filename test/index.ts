@@ -2,8 +2,7 @@ import test from 'ava'
 
 import { Safepay } from '../src'
 import { SafepayEnvironment } from '../src/types'
-import { config, configSubscriptions } from './fixtures/config'
-import { Subscription } from '../src/resources'
+import { config } from './fixtures/config'
 
 // Payment
 

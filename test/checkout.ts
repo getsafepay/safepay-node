@@ -40,10 +40,22 @@ test('with optional params', t => {
   t.is(url, CHECKOUT_SANDBOX_URL)
 })
 
+test('with subscription params', t => {
+  const safepay = new Safepay(config.sandbox)
+
+  const url = safepay.checkout.createSubscriptionWithToken(
+    checkoutSubscriptionsParams
+  )
+
+  t.is(url, SUBSCRIPTION_SANDBOX_URL)
+})
+
 test('development subscription url', t => {
   const subscription = new Safepay(config.development)
 
-  const url = subscription.createCheckoutUrl.create(checkoutSubscriptionsParams)
+  const url = subscription.checkout.createSubscriptionWithToken(
+    checkoutSubscriptionsParams
+  )
 
   t.is(url, SUBSCRIPTION_DEVELOPMENT_URL)
 })
@@ -51,7 +63,9 @@ test('development subscription url', t => {
 test('sandbox subscription url', t => {
   const subscription = new Safepay(config.sandbox)
 
-  const url = subscription.createCheckoutUrl.create(checkoutSubscriptionsParams)
+  const url = subscription.checkout.createSubscriptionWithToken(
+    checkoutSubscriptionsParams
+  )
 
   t.is(url, SUBSCRIPTION_SANDBOX_URL)
 })
@@ -59,7 +73,9 @@ test('sandbox subscription url', t => {
 test('production subscription url', t => {
   const safepay = new Safepay(config.production)
 
-  const url = safepay.createCheckoutUrl.create(checkoutSubscriptionsParams)
+  const url = safepay.checkout.createSubscriptionWithToken(
+    checkoutSubscriptionsParams
+  )
 
   t.is(url, SUBSCRIPTION_PRODUCTION_URL)
 })
