@@ -6,9 +6,6 @@ import {
   CHECKOUT_PRODUCTION,
   CHECKOUT_SANDBOX,
   Environment
-  // SUBSCRIPTION_DEVELOPMENT,
-  // SUBSCRIPTION_PRODUCTION,
-  // SUBSCRIPTION_SANDBOX
 } from './constants'
 
 export function buildCheckoutUrl(env: Environment): string {

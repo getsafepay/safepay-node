@@ -6,13 +6,6 @@ export const CHECKOUT_PRODUCTION = 'https://getsafepay.com/checkout'
 export const CHECKOUT_SANDBOX = 'https://sandbox.api.getsafepay.com/checkout'
 export const CHECKOUT_DEVELOPMENT = 'https://dev.api.getsafepay.com/checkout'
 
-// export const SUBSCRIPTION_PRODUCTION =
-//   'https://getsafepay.com/checkout/subscribe'
-// export const SUBSCRIPTION_SANDBOX =
-//   'https://sandbox.api.getsafepay.com/checkout/subscribe'
-// export const SUBSCRIPTION_DEVELOPMENT =
-//   'https://dev.api.getsafepay.com/checkout/subscribe'
-
 export enum Environment {
   Production = 'production',
   Sandbox = 'sandbox',

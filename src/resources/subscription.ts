@@ -2,6 +2,7 @@ import axios from 'axios'
 import { SafepayConfig } from '../types'
 import { buildApiUrlForSubscriptions } from '../utils/builder'
 import { SubscriptionPauseBehavior } from '../utils'
+import { SubscriptionProps } from '../types'
 
 export class Subscription {
   private config: SafepayConfig
@@ -10,12 +11,12 @@ export class Subscription {
     this.config = config
   }
 
-  async cancel(subscriptionId: string): Promise<Subscription> {
+  async cancel(subscriptionId: string): Promise<SubscriptionProps> {
     const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
-      data: Subscription
+      data: SubscriptionProps
     }>({
       baseURL: url,
       headers: { 'X-SFPY-MERCHANT-SECRET': this.config.v1Secret },
@@ -33,12 +34,12 @@ export class Subscription {
   }: {
     subscriptionId: string
     behavior: SubscriptionPauseBehavior
-  }): Promise<Subscription> {
+  }): Promise<SubscriptionProps> {
     const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
-      data: Subscription
+      data: SubscriptionProps
     }>({
       baseURL: url,
       headers: { 'X-SFPY-MERCHANT-SECRET': this.config.v1Secret },
@@ -50,12 +51,12 @@ export class Subscription {
     return data
   }
 
-  async resume(subscriptionId: string): Promise<Subscription> {
+  async resume(subscriptionId: string): Promise<SubscriptionProps> {
     const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
-      data: Subscription
+      data: SubscriptionProps
     }>({
       baseURL: url,
       headers: { 'X-SFPY-MERCHANT-SECRET': this.config.v1Secret },

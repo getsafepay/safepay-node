@@ -1,4 +1,3 @@
-import { error } from 'console'
 import { Safepay } from './src/index'
 import {
   Environment,
@@ -28,7 +27,7 @@ safepay.authorization
     console.log(generateUrl(token))
   })
   .catch(error => {
-    console.error(error)
+    console.log(error)
   })
 
 safepay.checkout
@@ -45,7 +44,7 @@ safepay.checkout
   })
 
 safepay.subscription
-  .cancel('sub_c94f2ffa-78cf-4de5-80c0-f57e3d1ce746')
+  .cancel('sub_78330e74-531a-417c-a3c3-9084aa950895')
   .then(response => {
     console.log(response)
   })
@@ -53,23 +52,23 @@ safepay.subscription
     console.log(error.response.data.error)
   })
 
-safepay.subscription
-  .pause({
-    behavior: SubscriptionPauseBehavior.MarkUncollectible,
-    subscriptionId: 'sub_c94f2ffa-78cf-4de5-80c0-f57e3d1ce746'
-  })
-  .then(response => {
-    console.log(response)
-  })
-  .catch(error => {
-    console.log(error.response.data.error)
-  })
+// safepay.subscription
+//   .pause({
+//     behavior: SubscriptionPauseBehavior.MarkUncollectible,
+//     subscriptionId: 'sub_78330e74-531a-417c-a3c3-9084aa950895'
+//   })
+//   .then(response => {
+//     console.log(response)
+//   })
+//   .catch(error => {
+//     console.log(error.response.data.error)
+//   })
 
-safepay.subscription
-  .resume('sub_c94f2ffa-78cf-4de5-80c0-f57e3d1ce746')
-  .then(response => {
-    console.log(response)
-  })
-  .catch(error => {
-    console.log(error.response.data.error)
-  })
+// safepay.subscription
+//   .resume('sub_78330e74-531a-417c-a3c3-9084aa950895')
+//   .then(response => {
+//     console.log(response)
+//   })
+//   .catch(error => {
+//     console.log(error.response.data.error)
+//   })
