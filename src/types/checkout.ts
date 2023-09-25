@@ -9,6 +9,12 @@ export type CheckoutCreateParams = {
 
 export type CheckoutCreateData = string
 
+export type SubscriptionCreateParamsWithoutToken = {
+  cancelUrl: string
+  redirectUrl: string
+  planId: string
+}
+
 export type SubscriptionCreateParams = {
   cancelUrl: string
   redirectUrl: string
@@ -16,10 +22,6 @@ export type SubscriptionCreateParams = {
   authToken: string
 }
 
-export type SubscriptionCreateParamsWithoutToken = {
-  cancelUrl: string
-  redirectUrl: string
-  planId: string
-}
+export type AuthToken = string
 
 export type SubscriptionCreateData = string

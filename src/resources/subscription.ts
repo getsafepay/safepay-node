@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { SafepayConfig, SubscriptionCreateData } from '../types'
-import { buildApiUrl } from '../utils/builder'
+import { SafepayConfig } from '../types'
+import { buildApiUrlForSubscriptions } from '../utils/builder'
+import { SubscriptionPauseBehavior } from '../utils'
 
 export class Subscription {
   private config: SafepayConfig
@@ -10,7 +11,7 @@ export class Subscription {
   }
 
   async cancel(subscriptionId: string): Promise<Subscription> {
-    const url = buildApiUrl(this.config.environment)
+    const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
@@ -31,9 +32,9 @@ export class Subscription {
     behavior
   }: {
     subscriptionId: string
-    behavior: string
+    behavior: SubscriptionPauseBehavior
   }): Promise<Subscription> {
-    const url = buildApiUrl(this.config.environment)
+    const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{
@@ -50,7 +51,7 @@ export class Subscription {
   }
 
   async resume(subscriptionId: string): Promise<Subscription> {
-    const url = buildApiUrl(this.config.environment)
+    const url = buildApiUrlForSubscriptions(this.config.environment)
     const {
       data: { data }
     } = await axios.request<{

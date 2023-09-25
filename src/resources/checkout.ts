@@ -53,12 +53,12 @@ export class Checkout {
   }: SubscriptionCreateParamsWithoutToken): Promise<SubscriptionCreateData> {
     const url = this.authorization
       .create()
-      .then(data => {
+      .then(token => {
         return this.createSubscriptionWithToken({
           cancelUrl: cancelUrl,
           redirectUrl: redirectUrl,
           planId: planId,
-          authToken: data
+          authToken: token
         })
       })
       .catch(error => {
