@@ -4,7 +4,6 @@ import MockAdapter from 'axios-mock-adapter'
 
 import { Safepay } from '../src'
 import { config } from './fixtures/config'
-import { Environment } from '../src/utils'
 
 let mock: MockAdapter
 

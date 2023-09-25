@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
+    "luxon": "^3.4.3",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
