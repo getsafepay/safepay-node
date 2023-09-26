@@ -1,9 +1,5 @@
 import { SafepayEnvironment, SafepayOptions } from '../../src/types'
-import {
-  API_URL_PRODUCTION,
-  API_URL_SANDBOX,
-  Environment
-} from '../../src/utils'
+import { Environment } from '../../src/utils'
 
 export const config: Record<SafepayEnvironment, SafepayOptions> = {
   production: {
