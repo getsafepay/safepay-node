@@ -79,4 +79,5 @@ export interface SubscriptionProps {
   resumed_at?: DateTime | undefined
   never_expires: boolean
   number_of_billing_cycles?: number | undefined
+  reference?: string | undefined
 }

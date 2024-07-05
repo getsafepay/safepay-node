@@ -49,7 +49,8 @@ export class Checkout {
   createSubscription({
     cancelUrl,
     redirectUrl,
-    planId
+    planId,
+    reference,
   }: SubscriptionCreateParamsWithoutToken): Promise<SubscriptionCreateData> {
     const url = this.authorization
       .create()
@@ -58,7 +59,8 @@ export class Checkout {
           cancelUrl: cancelUrl,
           redirectUrl: redirectUrl,
           planId: planId,
-          authToken: token
+          authToken: token,
+          reference: reference
         })
       })
       .catch(error => {
@@ -71,13 +73,15 @@ export class Checkout {
     cancelUrl,
     redirectUrl,
     planId,
-    authToken
+    authToken,
+    reference
   }: SubscriptionCreateParams): SubscriptionCreateData {
     const url = buildSubscriptionCheckoutUrl(this.config.environment)
 
     const params = new URLSearchParams({
       plan_id: planId,
       auth_token: authToken,
+      reference: reference,
       env: this.config.environment,
       cancel_url: cancelUrl,
       redirect_url: redirectUrl
