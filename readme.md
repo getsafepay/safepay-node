@@ -112,6 +112,7 @@ const valid = await safepay.verify.webhook(request)
 | Parameter     | Type     | Description                                                                        | Required |
 | ------------- | -------- | ---------------------------------------------------------------------------------- | -------- |
 | `planId`      | `string` | The plan id corresposnding to the plan you created on Safepay's merchant dashboard | Yes      |
+| `reference`   | `string` | Uniquely identify subscription with your internal identifier e.g. order_id         | Yes      |
 | `cancelUrl`   | `string` | Url to redirect to if user cancels the flow                                        | Yes      |
 | `redirectUrl` | `string` | Url to redirect to if user completes the flow                                      | Yes      |
 
@@ -120,7 +121,8 @@ safepay.checkout
   .createSubscription({
     cancelUrl: 'https://www.google.com/',
     redirectUrl: 'https://www.google.com/',
-    planId: 'plan_33e626b3-d92e-40b3-a379-4f89d61f8c83'
+    planId: 'plan_33e626b3-d92e-40b3-a379-4f89d61f8c83',
+    reference: 'cc3f2475-4fb1-4d80-99f8-3a582a496fa6'
   })
   .then(url => {
     console.log(url)
@@ -137,6 +139,7 @@ safepay.checkout
 | Parameter     | Type     | Description                                                                        | Required |
 | ------------- | -------- | ---------------------------------------------------------------------------------- | -------- |
 | `planId`      | `string` | The plan id corresposnding to the plan you created on Safepay's merchant dashboard | Yes      |
+| `reference`   | `string` | Uniquely identify subscription with your internal identifier e.g. order_id         | Yes      |
 | `cancelUrl`   | `string` | Url to redirect to if user cancels the flow                                        | Yes      |
 | `redirectUrl` | `string` | Url to redirect to if user completes the flow                                      | Yes      |
 | `authToken`   | `string` | The generated authentication token                                                 | Yes      |
@@ -149,6 +152,7 @@ const generateUrl = (token: string) => {
     cancelUrl: 'https://www.google.com/',
     redirectUrl: 'https://www.google.com/',
     planId: 'plan_33e626b3-d92e-40b3-a379-4f89d61f8c83',
+    reference: 'cc3f2475-4fb1-4d80-99f8-3a582a496fa6',
     authToken: token
   })
 }
