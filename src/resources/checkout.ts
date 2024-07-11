@@ -78,15 +78,18 @@ export class Checkout {
   }: SubscriptionCreateParams): SubscriptionCreateData {
     const url = buildSubscriptionCheckoutUrl(this.config.environment)
 
-    const params = new URLSearchParams({
+    let params = new URLSearchParams({
       plan_id: planId,
       auth_token: authToken,
-      reference: reference,
       env: this.config.environment,
       cancel_url: cancelUrl,
       redirect_url: redirectUrl
-    }).toString()
+    })
 
-    return `${url}?${params}`
+    if (reference) {
+      params.append("reference", reference);
+    }
+
+    return `${url}?${params.toString()}`
   }
 }

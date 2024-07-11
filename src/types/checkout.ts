@@ -13,7 +13,7 @@ export type SubscriptionCreateParamsWithoutToken = {
   cancelUrl: string
   redirectUrl: string
   planId: string
-  reference: string
+  reference?: string
 }
 
 export type SubscriptionCreateParams = {
@@ -21,7 +21,7 @@ export type SubscriptionCreateParams = {
   redirectUrl: string
   planId: string
   authToken: string
-  reference: string
+  reference?: string
 }
 
 export type AuthToken = string
